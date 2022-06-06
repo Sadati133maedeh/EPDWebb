@@ -52,7 +52,7 @@ public class TC_SearchInBloodBank {
 	  
 	  System.setProperty("webdriver.chrome.driver", "./src/test/resources/drivers/chromedriver.exe");
 	  driver = new ChromeDriver();
-	  driver.get("http://192.168.5.19:8020/bloodbankcheck");
+	  driver.get("http://192.168.5.147:3000/bloodbankcheck");
 	  driver.manage().window().maximize();
 	  }
 

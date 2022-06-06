@@ -101,6 +101,44 @@ public class BloodBankCheck {
 	
 	
 	
+	/// this variable is related to LabResult///
+	
+	@FindBy(xpath = "(//td//img)[3]")
+	WebElement labresult;
+	
+	@FindBy(id = "btnTestResult")
+	WebElement TestResultbtn;
+	
+	@FindBy(xpath = "//tbody//td[@data-field='SysDT']")
+	WebElement left;
+	
+	@FindBy(xpath = "(//tbody//td[@data-field='IsLock'])[10]")
+	WebElement right;
+	
+	
+	///This variables is related to reports
+	
+	@FindBy(id = "btnOtherReport")
+	WebElement OtherReport;
+	
+	@FindBy(xpath = "//input[@id = \"DTReqStart\"]")
+	WebElement StartDate;
+	
+	@FindBy(xpath = "//input[@id = \"DTReqEnd\"]")
+	WebElement  EndDate;
+	
+	@FindBy(xpath = "//select[@id = \"ReportName\"]")
+	WebElement  reporttype;
+	
+	@FindBy(xpath = "//select[@id = \"consumer\"]")
+	WebElement selectorType1;  //gozaresh bar asas faravade
+	
+	
+	@FindBy(xpath = "//button[@id = \"btnReport\"]")
+	WebElement report;  // report button
+	////////////****************************************************//////////////////////////////////
+	
+	
 	
 	
 	
@@ -213,4 +251,55 @@ public void History(String bastari) throws InterruptedException {
 	Close.click();
 }
 
+public void LabResult() throws InterruptedException {
+	
+	Actions action = new Actions(driver);
+	action.moveToElement(left).clickAndHold().moveToElement(right).build().perform();
+	
+	bloodgroup.click();
+	Thread.sleep(2000);
+	String Text = labresult.getAttribute("title");
+	
+	System.out.println(Text);
+	System.out.println("4444");
+	Thread.sleep(2000);
+	
+	
+	if (Text == "ازمایش بدون جواب") {
+		Thread.sleep(500);
+		TestResultbtn.click();
+		
+		System.out.println("ttt");
+	}
+
+
+
+}
+
+public void repoorts(String startdate,String enddate , String  gozaresh,String  gozaresh2) throws InterruptedException {
+	OtherReport.click();
+	Thread.sleep(3000);
+	for(String window : driver.getWindowHandles()) {
+		driver.switchTo().window(window);
+	}
+	StartDate.sendKeys(startdate);
+	
+	EndDate.sendKeys(enddate);
+	Thread.sleep(2000);
+	
+	EndDate.sendKeys(Keys.TAB);
+	
+	//reporttype.click();
+	Select select1 = new Select(reporttype);
+	select1.selectByValue(gozaresh);
+	if (	
+			Integer.parseInt(gozaresh) <=2) {
+		
+	
+	Select select2 = new Select(selectorType1);
+	select2.selectByValue(gozaresh2);		
+	}
+	
+	report.click();
+}
 }

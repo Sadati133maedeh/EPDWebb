@@ -53,7 +53,7 @@ public class TC_InsertToStock {
   public void beforeMethod() {
 	  System.setProperty("webdriver.chrome.driver", "./src/test/resources/drivers/chromedriver.exe");
 	  driver = new ChromeDriver();
-	  driver.get("http://192.168.5.19:8020/stock");
+	  driver.get("http://192.168.5.147:3000/stock");
 	  driver.manage().window().maximize();
 	  
 	  

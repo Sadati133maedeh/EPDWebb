@@ -40,17 +40,19 @@ public class Scroll {
 //	  JavascriptExecutor js = (JavascriptExecutor)driver;
 //	  js.executeScript("window.scrollBy(0,966)");
 	  
-	  Thread.sleep(4000);
+	  Thread.sleep(3000);
 	  
 	 // js.executeScript("window.scrollto(1039,966)");
-	 WebElement  el1 = driver.findElement(By.xpath("//tbody//td[@data-field='SysDT']"));
+//	 WebElement  el1 = driver.findElement(By.xpath("//tbody//td[@data-field='SysDT']"));
+//	 
+//	 WebElement  el2  = driver.findElement(By.xpath("(//tbody//td[@data-field = 'IsLock'])[10]"));
+//	 
+//	 action.moveToElement(el1).clickAndHold().moveToElement(el2).release().perform();
+//	 action.sendKeys(Keys.PAGE_DOWN).build().perform();
+//	  
+	 WebElement Azmayesh = driver.findElement(By.xpath("//td//img[@title='ازمایش بدون جواب']"));
 	 
-	 WebElement  el2  = driver.findElement(By.xpath("(//tbody//td[@data-field = 'IsLock'])[10]"));
-	 
-	 action.moveToElement(el1).clickAndHold().moveToElement(el2).release().perform();
-	 action.sendKeys(Keys.PAGE_DOWN).build().perform();
-	  
-	  
+	 System.out.println(Azmayesh.getAttribute("title"));
   }
   @BeforeMethod
   public void beforeMethod() {
